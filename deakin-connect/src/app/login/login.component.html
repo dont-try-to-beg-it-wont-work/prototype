@@ -1,0 +1,97 @@
+<style scoped>
+.page{
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: #4CD3CA;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginWrapper{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginPanel{
+    height: clamp(250px, 45vh, 400px);
+    background: white;
+    width: clamp(180px, 100vw, 500px);
+    border-radius: 30px 30px 0 0;
+}
+
+.loginForm{
+    width: 80%;
+    height: 65%;
+    margin: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    user-select: none;
+
+}
+
+.textInput{
+    width: calc(100% - 8px);
+    height: 15%;
+    border: 2px solid gray;
+    border-radius: 6px;
+    font-size: 1.5em;
+}
+.textInput::-webkit-input-placeholder {
+    color: lightgray;
+    padding-left: 2.5%;
+}
+
+.loginBtn{
+    border: none;
+    background: #4CD3CA;
+    padding: 3.5%;
+    border-radius: 6px;
+    font-size: 1.25em;
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+.logo{
+    height: 35%;
+    margin-top: 8vh;
+}
+</style>
+
+<div class="page">
+
+    <img src="/assets/temp_loginLogo.png" class="logo">
+
+    <div class="loginWrapper"> 
+        <div class="loginPanel">
+            <div class="loginForm">
+                <input type="text" id="username" class="textInput" required placeholder="Username">
+                <input type="password" id="password" class="textInput" required placeholder="Password">
+
+                <div style="display: flex; align-content: center">
+                    <input type="checkbox" > 
+                    <span>Remember me</span> 
+                </div>
+
+                <button class="loginBtn" (click)="login()"> Login </button>
+
+                <div style="display: flex; justify-content: space-between; color: blue;">
+                    <span>Sign up</span>
+                    <span>Forgot Password</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
