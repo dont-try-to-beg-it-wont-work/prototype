@@ -1,0 +1,14 @@
+<!-- Template used for pages, content is scrollable, turns into smaller viewport on larger screens -->
+<div class="pageContainer">
+    
+    <div class="header">
+        <ng-content select="[HeaderLeft]"></ng-content>
+        <ng-content select="[HeaderRight]"></ng-content>
+    </div>
+
+    <div class="contentContainer">
+        <div class="content">
+            <ng-content select="[content]"></ng-content>
+        </div>
+    </div>
+</div>

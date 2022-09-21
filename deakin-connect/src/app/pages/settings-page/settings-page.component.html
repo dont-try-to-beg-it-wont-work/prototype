@@ -1,0 +1,25 @@
+<app-page-template>
+    <div HeaderLeft> Settings </div>
+
+    <span content id="pageContainer">
+            <div id="profilePictureContainer">
+                <span class="material-symbols-outlined" id="addIcon">add_circle</span>
+                <img src="../assets/headshots/headshot1.jpg">
+            </div>
+        
+            
+            <div id="settingsContainer">
+                <div>
+                    <hr>
+                    <div class="settingsItem" *ngFor="let item of settingsItems | keyvalue : keypipe" (click)="logOut()">
+                        <div class="settingsItemWrapper">
+                            <span class="material-symbols-outlined" style="margin-right: clamp(8px, 3%, 32px)"> {{item.value}} </span> 
+                            <span> {{item.key}} </span>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            
+        </span>
+<app-page-template>

@@ -1,0 +1,23 @@
+<div class="pageContainer">
+
+    <img src="../assets/temp_loginLogo.png" class="logo">
+
+    <div class="loginPanel">
+        <div class="loginForm">
+            <input type="text" class="textInput" required placeholder="Username">
+            <input type="password" class="textInput" required placeholder="Password" [(ngModel)]="password">
+
+            <div style="display: flex; align-content: center">
+                <input type="checkbox" > 
+                <span>Remember me</span> 
+            </div>
+
+            <button class="{{canLogin() ? 'btn':'btnDisabled'}}" (click)="login()"> Login </button>
+
+            <div class="flexSpaceBetween">
+                <span class="url" (click)="toSignUpPage()">Sign up</span>
+                <span class="url">Forgot Password</span>
+            </div>
+        </div>
+    </div>
+</div>

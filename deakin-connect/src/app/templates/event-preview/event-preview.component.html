@@ -1,0 +1,37 @@
+
+<div class="eventPreview">
+    <img src="{{data.image}}">
+
+    <div class="eventPreviewContent" >
+        <div class="eventPreviewContentHeader">
+            <span style="font-weight: bold; font-size: var(--font-medium)">{{data.name}}</span>
+            <span style="font-size: var(--font-small); color: orange">{{data.time}}</span>
+        </div>
+        
+        <div class="eventPreviewContentText">
+            {{data.description}}
+        </div> 
+
+        <div class="eventPreviewContentFooter">
+            <div class="eventPreviewDisplayPictures">
+                <img src="./assets/headshots/headshot3.jpg" >
+                <img src="./assets/headshots/headshot4.jpg" >
+                <img src="./assets/headshots/headshot6.jpg" >
+                <div class="filledCircle">
+                    +6
+                </div>
+                <span style="color: teal">Going</span>
+            </div>
+
+            <div class="attendanceSelector" style="position: absolute; right: 0; bottom: 0;" *ngIf="data.status == 'Interested'">
+                Interested
+                <span class="material-symbols-outlined">arrow_drop_down</span>
+            </div>
+
+            <div class="attendanceSelector" style="position: absolute; right: 0; bottom: 0; background: var(--color-accent)" *ngIf="data.status == 'Going'">
+                Going
+                <span class="material-symbols-outlined">arrow_drop_down</span>
+            </div>
+        </div>
+    </div>
+</div>

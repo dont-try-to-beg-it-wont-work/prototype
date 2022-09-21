@@ -1,0 +1,42 @@
+<app-page-template>
+    <div HeaderLeft> Friends </div>
+    <span HeaderRight class="material-symbols-outlined" style="font-size: var(--font-large)">more_horiz</span>
+
+    <span content>
+        <div id="friendsMenu">
+            <span class="menuOption"
+            *ngFor="let menuOption of menuOptions"
+            id="{{menuOption == currentOption ? 'selectedItem':''}}"
+            (click)="currentOption = menuOption"> 
+                {{menuOption}} 
+            </span>
+        </div>
+    
+        <div id="friendsBanner">
+            <div class="displayPicture" *ngFor="let friendBannerObject of friendsBannerItems">
+                <img src="{{friendBannerObject[0]}}">
+                <span class="material-symbols-outlined" *ngIf="friendBannerObject[1]">fiber_manual_record</span>
+            </div>
+        </div>
+
+        <div id="inboxContainer">
+            <div class="messagePreview" 
+            *ngFor="let messagePreview of messageInfo"
+            id="{{messagePreview.messageViewed ? 'faded':''}}"
+            >
+
+                <div class="displayPicture">
+                    <img src="{{messagePreview.imageDir}}">
+                    <span class="material-symbols-outlined" *ngIf="messagePreview.currentlyOnline">fiber_manual_record</span>
+                </div>
+                
+                <div class="messagePreviewContent" id="{{true ? 'faded':''}}">
+                    <div style="font-weight: bold"> {{messagePreview.name}}</div>
+                    <div style="font-weight: 500; text-overflow: ellipsis;">{{messagePreview.message}}</div>
+                    <div style="font-size: var(--font-small)">{{messagePreview.timeSent}}</div>
+                </div>
+
+            </div>
+        </div>
+    </span>
+<app-page-template>

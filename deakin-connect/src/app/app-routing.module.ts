@@ -1,35 +1,37 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './services/authGuard/auth.guard';
 
 // Pages
-import { LoginComponent } from './login/login.component';
-import { ExploreComponent } from './explore/explore.component';
-import { EventsComponent } from './events/events.component';
-import { ConnectComponent } from './connect/connect.component';
-import { SettingsComponent } from './settings/settings.component';
+import { LoginPageComponent } from './pages/loginPage/login-page.component';
+import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
+import { ExplorePageComponent } from './pages/explore-page/explore-page.component';
+import { FriendsPageComponent } from './pages/friends-page/friends-page.component';
+import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
+import { EventsPageComponent } from './pages/events-page/events-page.component';
 
-// Routes with 'canActivate: [AuthGuard]' will only load if user is logged in
-// Otherwise they are redirected to a login page
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: LoginPageComponent
+  },{
+    path: 'SignUp',
+    component: RegistrationPageComponent
   },{
     path: 'Explore',
-    component: ExploreComponent,
+    component: ExplorePageComponent,
     canActivate: [AuthGuard]
   },{
-    path: 'Events',
-    component: EventsComponent,
-    canActivate: [AuthGuard]
-  },{
-    path: 'Connect',
-    component: ConnectComponent,
+    path: 'Friends',
+    component: FriendsPageComponent,
     canActivate: [AuthGuard]
   },{
     path: 'Settings',
-    component: SettingsComponent,
+    component: SettingsPageComponent,
+    canActivate: [AuthGuard]
+  },{
+    path: 'Events',
+    component: EventsPageComponent,
     canActivate: [AuthGuard]
   }
 ];
