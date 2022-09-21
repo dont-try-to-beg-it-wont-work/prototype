@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'deakin-connect'`, () => {
+  it(`should have as title 'deakinConnect'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('deakin-connect');
+    expect(app.title).toEqual('deakinConnect');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('deakin-connect app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('deakinConnect app is running!');
   });
 });

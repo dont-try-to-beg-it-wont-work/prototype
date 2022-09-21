@@ -1,0 +1,146 @@
+/* Global CSS variables */
+:root{
+    /* Variables - Font sizing */
+    --font-small: clamp(0.85em, 2vw, 1em);;
+    --font-medium: 1.25em;
+    --font-large: clamp(1.5em, 2vw, 2em);
+    --font-xlarge: clamp(1.3em, 2vw, 2.5em);
+
+    /* Spacing */
+    --spacing-small: clamp(2px, 1.5vw, 8px);
+    --spacing-medium: clamp(4px, 2vw, 16px);
+    --spacing-large: clamp(8px, 5%, 64px);
+
+
+    /* Variables - Colors */
+    --color-accent: #8BE8CB;
+    --color-background: #F5F8FF; 
+    --color-hyperLink: blue;
+    --color-grey: lightgrey;
+    --color-orange: orange;
+
+    /* Variables - Misc */
+    --navBar-Height: clamp(32px, 9vh, 64px);
+
+    /* Global styles */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: var(--font-small);
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.flexFillCentered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.flexSpaceBetween{
+    display: flex; 
+    justify-content: space-between;
+}
+
+.heading{
+    font-size: var(--font-large);
+    font-weight: bold;
+}
+
+.subheading{
+    font-size: var(--font-medium);
+    font-weight: 400;
+}
+
+.url{
+    color: var(--color-hyperLink);
+    cursor: pointer;
+    user-select: none;
+}
+
+.btn{
+    border: none;
+    background: var(--color-accent);
+    padding: 3.5%;
+    border-radius: 6px;
+    font-size: var(--font-medium);
+    font-weight: 500;
+    cursor: pointer; 
+    color: white;
+    transition: 0.3s;
+    width: calc(100%);
+    user-select: none;
+}
+.btn:hover{
+    filter: brightness(105%);
+}
+.btnDisabled{
+    user-select: none;
+    border: none;
+    background: var(--color-accent);
+    padding: 3.5%;
+    border-radius: 6px;
+    font-size: var(--font-medium);
+    font-weight: 500;
+    color: white;
+    transition: 0.3s;
+    width: calc(100%);
+    filter: brightness(85%);
+}
+
+.textInput{
+    width: calc(100% - 4px - 5%);
+    height: clamp(16px, 5vh, 48px);
+    border: 2px solid gray;
+    border-radius: 8px;
+    font-size: 1em;
+    padding: 0 2.5%;
+}
+.textInput::-webkit-input-placeholder {
+    color: gray;
+}
+
+.pill{
+    user-select: none;
+    padding: 3px 16px;
+    border: 2px solid gray;
+    color: gray;
+    border-radius: 64px;
+    height: fit-content;
+    white-space: nowrap;
+    margin: 5px;
+    font-size: var(--font-medium);
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+.pillSelected{
+    color: white;
+    background-color: var(--color-accent);
+    border: none;
+    padding: 5px 18px;
+}
+.pillContainer{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.faded{
+    opacity: 75%;
+}
+
+.attendanceSelector{
+    user-select: none;
+    background: orange;
+    width: clamp(0px, 25vw ,128px);
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+    border-radius: 8px 0 8px 0;
+    padding: 0 6px;
+}

@@ -1,0 +1,64 @@
+<app-page-template>
+    <!-- Page header -->
+    <div HeaderLeft> Create Account </div>
+    <img HeaderRight src="../assets/temp_loginLogo.png" id="headerImage">
+
+    <!-- Page content -->
+    <div content>
+
+        <div class="formNavigation">
+            <span class="material-symbols-outlined formNavIcon" id="navBackBtn" (click)="decrementStageIndex()" style="cursor:pointer; margin-left: var(--spacing-large)"> arrow_back_ios </span>
+            <div id="navIconsContainer">
+                <div id="navIcons">
+                    <span class="material-symbols-outlined formNavIcon"> {{iconType(0)}} </span>
+                    <span class="material-symbols-outlined formNavIcon"> {{iconType(1)}} </span>
+                    <span class="material-symbols-outlined formNavIcon"> {{iconType(2)}} </span>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="currentStageIndex == 0" class="formContent">
+            <input type="text" class="textInput" required placeholder="Username" [(ngModel)]="userName">
+            <input type="text" class="textInput" required placeholder="Deakin email" [(ngModel)]="email">
+            <input type="password" class="textInput" required placeholder="Password" [(ngModel)]="password">
+            <input type="password" class="textInput" required placeholder="Confirm password" [(ngModel)]="confPassword">
+
+            <div style="display: flex; align-content: center;">
+                <input type="checkbox" [(ngModel)]="termsConditions"> 
+                <span id="tc">I agree to the <span style="color: blue">terms and conditions</span></span> 
+            </div>
+
+            <button class="{{termsConditions ? 'btn':'btnDisabled'}}" (click)="nextStage(termsConditions)"> Next </button>
+        </div>
+
+        <div *ngIf="currentStageIndex == 1" class="formContent">
+            <div style="font-size: var(--font-large);">
+                Upload profile picture
+            </div>
+
+            <div id="profilePictureContainer">
+                <span class="material-symbols-outlined" id="addIcon" (click)="enableImage = true">add_circle</span>
+                <img src="../assets/headshots/headshot1.jpg" *ngIf="enableImage">
+                <img src="../assets/user_guest.png" *ngIf="!enableImage">
+            </div>
+
+            <button class="btn" (click)="nextStage(true)" style="width: 80%"> Next </button>
+        </div>
+
+        <div *ngIf="currentStageIndex == 2" class="formContent">
+            <div style="font-size: var(--font-large); width: 100%; text-align: center;">
+                Add your preferences
+            </div>
+
+            <div class="pillContainer">
+                <div *ngFor="let preference of preferences" (click)="toPreferences(preference)"
+                class="{{preferenceSelected(preference) ? 'pill pillSelected':'pill'}}">
+                    {{ preference }}
+                </div>
+            </div>
+
+            <button class="{{userHasPreferences() ? 'btn':'btnDisabled'}}" (click)="createAccount()" style="width: 100%"> Done </button>
+        </div>
+        
+    </div>
+</app-page-template>

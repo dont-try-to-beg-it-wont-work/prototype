@@ -1,0 +1,32 @@
+<div style="user-select: none;" *ngIf="isLoggedIn()">
+
+    <!-- side navbar, initially displayed -->
+    <div class="sideNav"> 
+      <div id="sideNavToggle">
+        <span (click)="sideNavOpen = !sideNavOpen" class="material-symbols-outlined">menu</span>
+      </div>
+      <div *ngIf="sideNavOpen" class="sideNavPanel"> 
+        <div class="sideNavItem" (click)="sideNavOpen = false">
+          <span class="material-symbols-outlined" style="font-size: 2.5em">close</span>
+        </div>
+        <div class="sideNavItem" *ngFor="let navItem of navItems | keyvalue : keypipe; 
+        let i = index" id="{{currentNavItemIndex == i ? 'sideNavItemSelected':''}}"
+        (click)="updatePage(i, navItem.key)">
+          <span class="material-symbols-outlined" style="font-size: 2em;">{{ navItem.value }}</span> 
+        </div>
+      </div>
+    </div>
+  
+    <!-- Bottom navbar, initially hidden-->
+    <div class="bottomNav"> 
+      <!-- Iterates through navItems, setting currentNavItemIndex to i when clicked, style changes when currentNavItemIndex = i -->
+      <div class="bottomNavItem" *ngFor="let navItem of navItems | keyvalue : keypipe; 
+        let i = index" id="{{currentNavItemIndex == i ? 'bottomNavitemSelected':''}}"
+        (click)="updatePage(i, navItem.key)">
+          <!-- Icon and text -->
+          <span class="material-symbols-outlined" style="font-size: 2em;">{{ navItem.value }}</span> 
+          {{navItem.key}}
+      </div>
+    </div>
+  
+</div>

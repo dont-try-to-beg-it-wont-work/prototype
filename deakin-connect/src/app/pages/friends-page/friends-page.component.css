@@ -1,0 +1,95 @@
+#pageContainer2{
+    width: clamp(0px, 100%, 500px);
+    height: 100%;
+}
+
+
+#friendsMenu{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-weight: 500;
+    padding-top: clamp(8px, 5%, 24px);
+    color: gray;
+    user-select: none;
+    background: white;
+}
+
+.menuOption{
+    font-size: var(--font-medium);
+    padding: 2px 4px;
+    text-align: center;
+    text-align: center;
+}
+
+#selectedItem{
+    padding-bottom: 0px;
+    border-bottom: solid 2px lightseagreen;
+    color: lightseagreen;;
+}
+
+#friendsBanner{
+    margin: 2% 0px;
+    width: 100%;
+    padding: 1.25vh 0;
+    height: clamp(32px, 10vh, 128px);
+    background: white;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.displayPicture{
+    height: clamp(32px, 8.5vh, 96px);
+    aspect-ratio: 1/1;
+    border-radius: 128px;
+    position: relative;
+    margin: 0  0.75vh;
+    user-select: none;
+}
+
+.displayPicture img{
+    height: 100%;
+    border-radius: 128px;
+    user-select: none;
+}
+
+.displayPicture span{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: lime;
+    background: white;
+    border-radius: 128px;
+    font-size: var(--font-medium);
+}
+
+#inboxContainer{
+    margin: 2% 0px;
+    width: 100%;
+    padding: 1.25vh 0;
+    height: 75%;
+    background: white;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.messagePreview{
+    position: relative;
+    padding: 10px 0;
+    width: 100%;
+    background: white;
+
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    padding-left: clamp(8px, 2%, 16px);
+}
+
+.messagePreviewContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: clamp(8px, 2%, 16px);
+    font-size: calc(var(--font-small) * 1.25);
+}

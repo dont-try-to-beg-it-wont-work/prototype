@@ -1,130 +1,28 @@
 <style>
-  :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+    #routerWrapper{
+        position: absolute;
+        top: 0; left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: var(--color-background);
+    }
+    
+    .loggedIn{
+        height: calc(100vh - var(--navBar-Height)) !important;
+    }
 
-  .bottomNav{ 
-    display: none; 
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: clamp(48px, 10vh, 58px);
-    justify-content: space-evenly;
-    align-content: center;
-  }
-
-  .bottomNavItem{
-    height: 90%;
-    width: 15%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    margin-top: 4px;
-    color: gray;
-    font-weight: 500;
-  }
-
-  #bottomNavitemSelected{
-    color: #4CD3CA;
-    margin-top: 0;
-    border-top: 4px solid #4CD3CA;
-  }
-
-  #sideNavToggle{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: calc(100vw - 20px);
-    background: #4CD3CA;
-    padding: 10px 10px;
-    color: white;
-  }
-
-  .sideNavPanel{
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: white;
-    width: clamp(48px, 10vw, 58px);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .sideNavItem{
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: white;
-    width: 100%;
-    aspect-ratio: 1/1;
-    color: gray;
-  }
-
-  #sideNavItemSelected{
-    background: #ACFFF9;
-    color: #04413D;
-  }
-
-
-  /* Responsive Styles */
-  @media screen and (max-width: 500px) {
-    .sideNav{ display: none; }
-    .bottomNav{ display: flex; }
-  }
-
-  @media screen and (min-width: 500px) {
-    .sideNav{ display: block; }
-    .bottomNav{ display: none; }
-    .routerWrapper{ margin-top: 64px; }
-  }
+    /* Used to apply a margin to #RouterWrapper if user is logged in */
+    @media screen and (min-width: 500px) {
+        .loggedIn{
+            margin-top: var(--navBar-Height);
+        }
+    }
 </style>
 
-<!-- navBar, only displayed if user is logged in -->
-<div *ngIf="isLoggedIn()" style="user-select: none;">
+<!-- Display navbar above router -->
+<app-navigation-bar></app-navigation-bar>
 
-  <!-- side navbar, initially displayed -->
-  <div class="sideNav"> 
-    <div id="sideNavToggle">
-      <span (click)="sideNavOpen = !sideNavOpen" class="material-symbols-outlined" style="font-size: 2.5em; cursor: pointer;">menu</span>
-    </div>
-    <div *ngIf="sideNavOpen" class="sideNavPanel"> 
-      <div class="sideNavItem" (click)="sideNavOpen = false">
-        <span class="material-symbols-outlined" style="font-size: 2.5em">close</span>
-      </div>
-      <div class="sideNavItem" *ngFor="let navItem of navItems | keyvalue : keypipe; 
-      let i = index" id="{{currentNavItemIndex == i ? 'sideNavItemSelected':''}}"
-      (click)="updatePage(i, navItem.key)">
-        <span class="material-symbols-outlined" style="font-size: 2em;">{{ navItem.value }}</span> 
-      </div>
-    </div>
-  </div>
-
-  <!-- Bottom navbar, initially hidden-->
-  <div class="bottomNav"> 
-    <!-- Iterates through navItems, setting currentNavItemIndex to i when clicked, style changes when currentNavItemIndex = i -->
-    <div class="bottomNavItem" *ngFor="let navItem of navItems | keyvalue : keypipe; 
-      let i = index" id="{{currentNavItemIndex == i ? 'bottomNavitemSelected':''}}"
-      (click)="updatePage(i, navItem.key)">
-        <!-- Icon and text -->
-        <span class="material-symbols-outlined" style="font-size: 2em;">{{ navItem.value }}</span> 
-        {{navItem.key}}
-    </div>
-  </div>
-
-</div>
-
-<div class="routerWrapper">
-  <router-outlet></router-outlet>
+<!-- Router view -->
+<div id="routerWrapper" class="{{loggedIn() ? 'loggedIn':''}}">
+    <router-outlet></router-outlet>
 </div>

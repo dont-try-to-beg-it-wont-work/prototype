@@ -1,0 +1,35 @@
+<app-page-template>
+    <div HeaderLeft> Explore event gallery </div>
+
+    <span content>
+        <!-- Tags / pills -->
+        <div class="tags">
+            <div 
+            style="display: flex; justify-content: space-between; font-size: var(--font-medium); padding: var(--spacing-small) var(--spacing-medium)"
+            >
+                <span style="color: gray">Tags</span>
+                <span style="color: blue">More...</span>
+            </div>
+    
+            <div class="pillContainer">
+                <div 
+                *ngFor="let tag of tags"
+                (click)="currentTag = tag"
+                class="{{currentTag == tag ? 'pill pillSelected':'pill'}}"> {{tag}} </div>
+            </div>
+        </div>
+        
+        <!-- Gallery -->
+        <div class="galleryContainer">
+            <img src="./assets/sports/1.png">
+            <img src="./assets/sports/2.png">
+            <img src="./assets/sports/3.png">
+            <img src="./assets/sports/4.png">
+            <img src="./assets/sports/5.png">
+            <img src="./assets/sports/6.png">
+            <img src="./assets/sports/7.png">
+            <img src="./assets/sports/8.png">
+            <img src="./assets/sports/archery.jpg">
+        </div>
+    </span>
+<app-page-template>

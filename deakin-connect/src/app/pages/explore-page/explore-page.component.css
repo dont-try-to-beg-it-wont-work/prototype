@@ -1,0 +1,23 @@
+.tags{
+    padding: var(--spacing-medium);
+    background: white;
+}
+
+.galleryContainer{
+    margin-top: var(--spacing-small);
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
+    align-items: center;
+    background: white;
+    
+    overflow-y: auto;
+    height: 85%;
+}
+
+.galleryContainer img{
+    width: 45%;
+    aspect-ratio: 1/1;
+    padding: 2.5%
+}

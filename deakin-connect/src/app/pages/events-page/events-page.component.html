@@ -1,0 +1,104 @@
+<app-page-template>
+    <div HeaderLeft *ngIf="!viewingEvent"> Events </div>
+    <div HeaderLeft *ngIf="viewingEvent" style="display: flex; align-items: center"> 
+        <span class="material-symbols-outlined"
+        style="cursor: pointer"
+        (click)="viewingEvent = false">
+            arrow_back_ios_new
+        </span>
+        Events 
+    </div>
+    <span HeaderRight class="material-symbols-outlined" style="font-size: var(--font-large)">more_horiz</span>
+
+
+    <!-- Event preview view -->
+    <span content *ngIf="!viewingEvent">
+        <span class="searchBoxContainer">
+            <div class="searchBox">
+                <input type="text" class="textInput">
+                <span class="material-symbols-outlined">search</span>
+            </div>
+
+            <div id="menuContainer">
+                <span class="menuOption"
+                *ngFor="let menuOption of menuOptions"
+                id="{{menuOption == currentMenuOption ? 'selectedItem':''}}"
+                (click)="currentMenuOption = menuOption"> 
+                    {{menuOption}} 
+                </span>
+            </div>
+        </span>
+    
+        <div class="eventPreviewContainer">
+            <span *ngFor="let event of eventDetails; let index=index;">
+                <app-event-preview  [data]="event" (click)="CurrentEventIndex = index; viewingEvent = true;"> 
+                </app-event-preview>
+            </span>
+        </div>
+    </span>
+
+    <!-- Detailed event view -->
+    <span content *ngIf="viewingEvent" id="eventView">
+        <span class="eventImageContainer">
+            <img src="{{eventDetails[CurrentEventIndex].image}}" alt="">
+        </span>
+
+        <span class="eventDetails">
+            <div class="eventDetailsHeader">
+                <div>
+                    <span style="font-size: var(--font-large); font-weight: bold;"> {{eventDetails[CurrentEventIndex].name}} </span>
+                    <br>
+                    <span style="color: orange; font-size: var(--font-small)"> {{eventDetails[CurrentEventIndex].time}} </span>
+                </div>
+
+
+                <div class="attendanceSelector" *ngIf="eventDetails[CurrentEventIndex].status == 'Interested'">
+                    Interested
+                    <span class="material-symbols-outlined">arrow_drop_down</span>
+                </div>
+
+                <div class="attendanceSelector" style="background: var(--color-accent)" *ngIf="eventDetails[CurrentEventIndex].status == 'Going'">
+                    Going
+                    <span class="material-symbols-outlined">arrow_drop_down</span>
+                </div>
+
+            </div>
+
+            <div class="eventDetailsContent">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget bibendum justo, in rutrum orci. Etiam consectetur venenatis purus, tristique accumsan tellus ullamcorper ut. 
+            </div>
+
+            <div>
+                <div style="font-weight: bold; padding-bottom: 6px">Host</div>
+                <div class="eventHost">
+                    <img src="{{eventDetails[CurrentEventIndex].hostImageDir}}">
+                    <div style="padding-left: 12px">
+                        <div style="font-weight: bold;"> {{eventDetails[CurrentEventIndex].host}} </div> 
+                        <div style="color: blue"> View Profile </div>
+                        <div style="color: blue"> Contact </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div style="font-weight: bold; padding-bottom: 6px">Going</div>
+                <div class="goingContainer">
+                    <div>
+                        <img src="./assets/headshots/headshot4.jpg" style="height: 32px; width: 32px; border-radius: 32px">
+                        <img src="./assets/headshots/headshot3.jpg" style="height: 32px; width: 32px; border-radius: 32px">
+                        <img src="./assets/headshots/headshot6.jpg" style="height: 32px; width: 32px; border-radius: 32px">
+                        <img src="./assets/headshots/headshot5.jpg" style="height: 32px; width: 32px; border-radius: 32px">
+                    </div>
+
+                    <div style="display: flex; align-items: center; color: grey">
+                        {{eventDetails[CurrentEventIndex].attendanceText}}
+                        <span class="material-symbols-outlined" style="padding-left: 4px">person</span>
+                    </div>
+                </div>
+            </div>
+
+        </span>
+    </span>
+
+
+<app-page-template>
